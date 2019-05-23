@@ -23,6 +23,7 @@ public class SubscribeRequest extends Request {
     @NotBlank(message = "clientUserName can not be blank or null ")
     private String clientUserName;
 
+
     @NotNull
     @Valid
     private List<SubscribePlan> subscribePlan;

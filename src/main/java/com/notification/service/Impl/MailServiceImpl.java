@@ -16,9 +16,9 @@ public class MailServiceImpl implements NotificationService<Notification> {
     public void send(Notification notification)throws Exception{
 
        if(notification.getMail()!=null){
-           log.info("mail send successfully for mail id  "+notification.getMail().getMailId());
            notification.getMail().setMailId(notification.getId());
            QueueStore.publish(notification.getMail());
+           log.info("mail send successfully for mail id  "+notification.getMail().getMailAddress());
        }
          massageServiceImpl.send(notification);
     }

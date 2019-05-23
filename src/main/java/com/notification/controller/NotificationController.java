@@ -1,5 +1,4 @@
 package com.notification.controller;
-import com.notification.dao.database.ClientData;
 import com.notification.exception.CustomNotificationException;
 import com.notification.request.Notification;
 import com.notification.response.NotificationResponse;
@@ -12,17 +11,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping
-@RestController("/notification")
+@RestController
+@RequestMapping("/notification")
 public class NotificationController {
     @Autowired
     @Qualifier("mailServiceImpl")
     private NotificationService<Notification> notificationService;
+
     @PostMapping("/send")
-    public ResponseEntity<Object> sendNotification(@RequestBody  Notification notification, @RequestHeader("clientKey")
+    public ResponseEntity<Object> sendNotification(@RequestBody Notification notification, @RequestHeader("clientKey")
                                                    String clientKey){
              Validator.validateClientAndRequest(notification,clientKey);
              try {
+                 Validator.checkEligibilityAndUpdate(notification,clientKey);
                 notificationService.send(notification);
                 NotificationResponse notificationResponse=NotificationResponse.builder()
                         .message("request process successfully")

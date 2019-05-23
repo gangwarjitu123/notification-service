@@ -12,9 +12,9 @@ public class MessageServiceImpl implements NotificationService<Notification> {
     @Override
     public void send(Notification notification) throws Exception {
         if(notification.getMessage()!=null){
-            log.info("message publish to queue for mobile no. "+notification.getMessage().getMobileNumber());
             notification.getMessage().setMessageId(notification.getId());
             QueueStore.publish(notification.getMessage());
+            log.info("message publish to queue for mobile no. "+notification.getMessage().getMobileNumber());
 
         }
     }

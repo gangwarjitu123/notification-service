@@ -1,6 +1,7 @@
 package com.notification.dao.database;
 import lombok.*;
 
+import java.math.BigInteger;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -19,7 +20,7 @@ public class ClientData {
     static  {
 
         clients.put("e92674c2-54da-441b-aa35-40dd8ae73e6f",new Client("JITENDRA","JITENDRA123","Jitendra", Collections.singletonList(
-                new PlanDetails(SubscriptionData.SubscriptionType.GOLD,1,1*99,0))));
+                new PlanDetails(SubscriptionData.SubscriptionType.GOLD,1,1*99,0l))));
     }
 
     /**
@@ -46,6 +47,6 @@ public class ClientData {
         private SubscriptionData.SubscriptionType subscriptionType;
         private int month;
         private double amount;
-        private int currentUses;
+        private Long currentUses;
     }
 }

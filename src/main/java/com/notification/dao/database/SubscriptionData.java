@@ -43,9 +43,9 @@ public final  class SubscriptionData {
     static  public HashMap<SubscriptionType,SubscriptionDetails> subscriptionData= new LinkedHashMap<>();
     static  {
 
-        subscriptionData.put(SubscriptionType.GOLD,new SubscriptionDetails(BigInteger.valueOf(1),true,true,1000));
-        subscriptionData.put(SubscriptionType.SILVER,new SubscriptionDetails(BigInteger.valueOf(10000000l),true,false,49));
-        subscriptionData.put(SubscriptionType.PLATENIUM,new SubscriptionDetails(BigInteger.valueOf(100000000l),true,true,10000));
+        subscriptionData.put(SubscriptionType.GOLD,new SubscriptionDetails(10l,true,true,1000));
+        subscriptionData.put(SubscriptionType.SILVER,new SubscriptionDetails(10000l,true,false,49));
+        subscriptionData.put(SubscriptionType.PLATENIUM,new SubscriptionDetails(1000000000l,true,true,10000));
     }
 
     /**
@@ -55,7 +55,7 @@ public final  class SubscriptionData {
     @Setter
     @NoArgsConstructor
     public static class SubscriptionDetails{
-        private BigInteger count;
+        private Long count;
         private boolean email;
         private boolean sms;
         private double amountPerMonth;
@@ -67,7 +67,7 @@ public final  class SubscriptionData {
          * @param email the email
          * @param sms   the sms
          */
-        public SubscriptionDetails(BigInteger count, boolean email, boolean sms,double amountPerMonth) {
+        public SubscriptionDetails(Long count, boolean email, boolean sms,double amountPerMonth) {
             this.count = count;
             this.email = email;
             this.sms = sms;
